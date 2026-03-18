@@ -25,7 +25,7 @@ jobs:
         uses: dltkdgns00/BOJ-action@main
         with:
           path: not_filled_files.txt
-          user_id: meatHo
+          user_id: meatho
       - name: remove not_filled_files.txt
         run: rm not_filled_files.txt
       - name: Commit and push changes
