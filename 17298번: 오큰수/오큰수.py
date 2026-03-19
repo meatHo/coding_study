@@ -1,26 +1,29 @@
 #  **************************************************************************  #
 #                                                                              #
 #                                                       :::    :::    :::      #
-#    Problem Number: 11003                             :+:    :+:      :+:     #
+#    Problem Number: 17298                             :+:    :+:      :+:     #
 #                                                     +:+    +:+        +:+    #
 #    By: meatho <boj.kr/u/meatho>                    +#+    +#+          +#+   #
 #                                                   +#+      +#+        +#+    #
-#    https://boj.kr/11003                          #+#        #+#      #+#     #
-#    Solved: 2026/03/18 22:50:50 by meatho        ###          ###   ##.kr     #
+#    https://boj.kr/17298                          #+#        #+#      #+#     #
+#    Solved: 2026/03/18 23:36:15 by meatho        ###          ###   ##.kr     #
 #                                                                              #
 #  **************************************************************************  #
 import sys
 from collections import *
 
-n,l=map(int,sys.stdin.readline().rstrip().split())
-arr=list(map(int,sys.stdin.readline().rstrip().split()))
+n = int(sys.stdin.readline().rstrip())
+arr = list(map(int,sys.stdin.readline().rstrip().split()))
+res = [0]*n
 
-adeque=deque()
-
+mystack=deque()
 for i in range(n):
-    while adeque and adeque[-1][0]>arr[i]:
-        adeque.pop()
-    adeque.append((arr[i],i))
-    if adeque[0][1]+l==i:
-        adeque.popleft()
-    print(adeque[0][0],end=' ')
+    while mystack and arr[mystack[-1]]<arr[i]:
+        res[mystack.pop()]=arr[i]
+    mystack.append(i)
+
+while mystack:
+    res[mystack.pop()]=-1
+
+for i in res:
+    print(i, end=" ")

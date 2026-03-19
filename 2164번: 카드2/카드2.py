@@ -1,26 +1,25 @@
 #  **************************************************************************  #
 #                                                                              #
 #                                                       :::    :::    :::      #
-#    Problem Number: 11003                             :+:    :+:      :+:     #
+#    Problem Number: 2164                              :+:    :+:      :+:     #
 #                                                     +:+    +:+        +:+    #
 #    By: meatho <boj.kr/u/meatho>                    +#+    +#+          +#+   #
 #                                                   +#+      +#+        +#+    #
-#    https://boj.kr/11003                          #+#        #+#      #+#     #
-#    Solved: 2026/03/18 22:50:50 by meatho        ###          ###   ##.kr     #
+#    https://boj.kr/2164                           #+#        #+#      #+#     #
+#    Solved: 2026/03/19 00:12:02 by meatho        ###          ###   ##.kr     #
 #                                                                              #
 #  **************************************************************************  #
+
 import sys
 from collections import *
 
-n,l=map(int,sys.stdin.readline().rstrip().split())
-arr=list(map(int,sys.stdin.readline().rstrip().split()))
+n=int(sys.stdin.readline().rstrip())
 
-adeque=deque()
+mydq = deque()
+for i in range(1,n+1):
+    mydq.appendleft(i)
 
-for i in range(n):
-    while adeque and adeque[-1][0]>arr[i]:
-        adeque.pop()
-    adeque.append((arr[i],i))
-    if adeque[0][1]+l==i:
-        adeque.popleft()
-    print(adeque[0][0],end=' ')
+while len(mydq)>1:
+    mydq.pop()
+    mydq.appendleft(mydq.pop())
+print(mydq.pop())

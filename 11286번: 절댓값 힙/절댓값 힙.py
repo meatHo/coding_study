@@ -1,26 +1,27 @@
 #  **************************************************************************  #
 #                                                                              #
 #                                                       :::    :::    :::      #
-#    Problem Number: 11003                             :+:    :+:      :+:     #
+#    Problem Number: 11286                             :+:    :+:      :+:     #
 #                                                     +:+    +:+        +:+    #
 #    By: meatho <boj.kr/u/meatho>                    +#+    +#+          +#+   #
 #                                                   +#+      +#+        +#+    #
-#    https://boj.kr/11003                          #+#        #+#      #+#     #
-#    Solved: 2026/03/18 22:50:50 by meatho        ###          ###   ##.kr     #
+#    https://boj.kr/11286                          #+#        #+#      #+#     #
+#    Solved: 2026/03/19 22:01:40 by meatho        ###          ###   ##.kr     #
 #                                                                              #
 #  **************************************************************************  #
 import sys
 from collections import *
+from queue import *
 
-n,l=map(int,sys.stdin.readline().rstrip().split())
-arr=list(map(int,sys.stdin.readline().rstrip().split()))
+n=int(sys.stdin.readline().rstrip())
 
-adeque=deque()
-
+pq = PriorityQueue()
 for i in range(n):
-    while adeque and adeque[-1][0]>arr[i]:
-        adeque.pop()
-    adeque.append((arr[i],i))
-    if adeque[0][1]+l==i:
-        adeque.popleft()
-    print(adeque[0][0],end=' ')
+    t=int(sys.stdin.readline().rstrip())
+    if t==0:
+        if pq.empty():
+            print(0)
+        else:
+            print(pq.get()[1])
+    else:
+        pq.put((abs(t),t))
