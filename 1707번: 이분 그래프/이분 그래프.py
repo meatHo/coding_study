@@ -59,6 +59,7 @@ def dfs(root):
             dfs(i)
         elif visited[i]==visited[root]:
             res=False
+
 sys.setrecursionlimit(10**6)
 k=int(sys.stdin.readline().rstrip())
 for _ in range(k):
