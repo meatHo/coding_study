@@ -32,3 +32,4 @@ while dq:
         arr[i]-=1
         if arr[i]==0:
             dq.append(i)
+            
