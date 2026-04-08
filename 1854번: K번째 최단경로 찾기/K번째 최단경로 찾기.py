@@ -30,7 +30,6 @@ while hq:
     cur_weight, cur = heapq.heappop(hq)
 
     for to, to_weight in dir[cur]:
-        # print(cur)
         next_weight = cur_weight+to_weight
 
         if len(weight[to])<k:
@@ -43,7 +42,6 @@ while hq:
             heapq.heappush(hq,(next_weight,to))
 
 for i in range(1,n+1):
-    # print(weight[i])
     if len(weight[i])<k:
         print(-1)
     else:
